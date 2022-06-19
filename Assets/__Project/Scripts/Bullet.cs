@@ -24,7 +24,7 @@ namespace SpaceInvadersRemake
             Vector2 movePosition = (speed * Time.fixedDeltaTime * MoveDirection) + rigidbody.position;
             rigidbody.MovePosition(movePosition);
 
-            if (transform.position.y > Camera.main.orthographicSize)
+            if (Mathf.Abs(transform.position.y) > Camera.main.orthographicSize)
             {
                 Destroy(gameObject);
             }
