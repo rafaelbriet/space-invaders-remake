@@ -15,8 +15,6 @@ namespace SpaceInvadersRemake
         private Weapon weapon;
         [SerializeField]
         private int maxLives = 3;
-
-        private int currentLives;
         private float horizontal;
         private float screenBounds;
         private new BoxCollider2D collider;
@@ -24,11 +22,14 @@ namespace SpaceInvadersRemake
         private InputAction horizontalAction;
         private InputAction fireAction;
 
+        public int CurrentLives { get; private set; }
+
         public event EventHandler PlayerDied;
+        public event EventHandler PlayerDamaged;
 
         private void Awake()
         {
-            currentLives = maxLives;
+            CurrentLives = maxLives;
 
             collider = GetComponent<BoxCollider2D>();
             playerInput = GetComponent<PlayerInput>();
@@ -88,9 +89,11 @@ namespace SpaceInvadersRemake
 
         public void Damage()
         {
-            currentLives--;
+            CurrentLives--;
 
-            if (currentLives <= 0)
+            PlayerDamaged?.Invoke(this, EventArgs.Empty);
+
+            if (CurrentLives <= 0)
             {
                 PlayerDied?.Invoke(this, EventArgs.Empty);
                 Destroy(gameObject);
