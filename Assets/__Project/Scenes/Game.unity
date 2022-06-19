@@ -431,6 +431,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alienPrefab: {fileID: 2570761696993464403, guid: 603c5affe5f63634cbf5ba804791de64, type: 3}
   invasionSize: {x: 11, y: 5}
+  invasionStartingSpeed: 5
   spaceBetweenAliens: 0.5
 --- !u!4 &743549032
 Transform:
