@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,9 @@ namespace SpaceInvadersRemake
         [SerializeField]
         private InvasionCommander invasionCommander;
 
-        private int currentPlayerPoints = 0;
+        public int CurrentPlayerPoints { get; set; }
+
+        public event EventHandler PlayerScored;
 
         private void OnEnable()
         {
@@ -33,7 +36,8 @@ namespace SpaceInvadersRemake
 
         private void OnInvaderKilled(object sender, InvaderKilledEventArgs e)
         {
-            currentPlayerPoints += e.Invader.PointsWhenKilled;
+            CurrentPlayerPoints += e.Invader.PointsWhenKilled;
+            PlayerScored?.Invoke(this, EventArgs.Empty);
         }
     }
 }
