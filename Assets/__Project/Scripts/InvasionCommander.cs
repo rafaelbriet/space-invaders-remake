@@ -14,9 +14,13 @@ namespace SpaceInvadersRemake
         private float invasionStartingSpeed = 5f;
         [SerializeField]
         private float spaceBetweenAliens = 1f;
+        [SerializeField]
+        private float firingRate = 1f;
 
         private GameObject[] invasionRows;
+        private List<Invader> invaders;
         private float screenBounds;
+        private bool canFire = true;
 
         private void Awake()
         {
@@ -40,15 +44,44 @@ namespace SpaceInvadersRemake
                     row.GetComponent<InvasionRow>().MoveDirection = 1f;
                     row.transform.position = new Vector3(row.transform.position.x, row.transform.position.y - 0.5f, row.transform.position.z);
                 }
-                
+
                 float moveSpeed = invasionStartingSpeed;
                 float movePosition = row.transform.position.x + (row.GetComponent<InvasionRow>().MoveDirection * moveSpeed * Time.deltaTime);
                 row.transform.position = new Vector3(movePosition, row.transform.position.y, row.transform.position.z);
             }
+
+            Fire();
+        }
+
+        private void Fire()
+        {
+            if (!canFire)
+            {
+                return;
+            }
+
+            invaders.RemoveAll(item => item == null);
+
+            if (invaders.Count > 0)
+            {
+                Invader randomInvander = invaders[Random.Range(0, invaders.Count)];
+                randomInvander.Weapon.Fire(Vector2.down);
+                StartCoroutine(FiringCooldownCoroutine());
+            }
+        }
+
+        private IEnumerator FiringCooldownCoroutine()
+        {
+            canFire = false;
+
+            yield return new WaitForSeconds(firingRate);
+
+            canFire = true;
         }
 
         private void CreateInvasion()
         {
+            invaders = new List<Invader>();
             invasionRows = new GameObject[invasionSize.y];
 
             float invasionBounds = invasionSize.x / 2;
@@ -68,7 +101,7 @@ namespace SpaceInvadersRemake
                 {
                     float alienSpacing = x * spaceBetweenAliens;
                     Vector3 alienPosition = new Vector3(x + alienSpacing - alienOffset, invasionRow.transform.position.y);
-                    Instantiate(alienPrefab, alienPosition, Quaternion.identity, invasionRow.transform);
+                    invaders.Add(Instantiate(alienPrefab, alienPosition, Quaternion.identity, invasionRow.transform).GetComponent<Invader>());
                 }
             }
         }
