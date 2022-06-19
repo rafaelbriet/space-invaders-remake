@@ -10,5 +10,6 @@ namespace SpaceInvadersRemake
     {
         public const string Game = "Game";
         public const string MainMenu = "MainMenu";
+        public const string GameOver = "GameOver";
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +23,8 @@ namespace SpaceInvadersRemake
         private PlayerInput playerInput;
         private InputAction horizontalAction;
         private InputAction fireAction;
+
+        public event EventHandler PlayerDied;
 
         private void Awake()
         {
@@ -89,6 +92,7 @@ namespace SpaceInvadersRemake
 
             if (currentLives <= 0)
             {
+                PlayerDied?.Invoke(this, EventArgs.Empty);
                 Destroy(gameObject);
             }
         }
