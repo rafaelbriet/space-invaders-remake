@@ -12,6 +12,8 @@ namespace SpaceInvadersRemake
 
         private new Rigidbody2D rigidbody;
 
+        public Vector2 MoveDirection { get; set; }
+
         private void Awake()
         {
             rigidbody = GetComponent<Rigidbody2D>();
@@ -19,7 +21,7 @@ namespace SpaceInvadersRemake
 
         private void FixedUpdate()
         {
-            Vector2 movePosition = (speed * Time.fixedDeltaTime * Vector2.up) + rigidbody.position;
+            Vector2 movePosition = (speed * Time.fixedDeltaTime * MoveDirection) + rigidbody.position;
             rigidbody.MovePosition(movePosition);
 
             if (transform.position.y > Camera.main.orthographicSize)

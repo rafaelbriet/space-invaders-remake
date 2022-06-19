@@ -11,13 +11,8 @@ namespace SpaceInvadersRemake
         [SerializeField]
         private float moveSpeed = 5f;
         [SerializeField]
-        private float firingRate = 0.5f;
-        [SerializeField]
-        private GameObject bulletPrefab;
-        [SerializeField]
-        private Transform firingPoint;
+        private Weapon weapon;
 
-        private bool canFire = true;
         private float horizontal;
         private float screenBounds;
         private new BoxCollider2D collider;
@@ -66,20 +61,7 @@ namespace SpaceInvadersRemake
 
         private void OnFireAction(InputAction.CallbackContext obj)
         {
-            if (canFire)
-            {
-                Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
-                StartCoroutine(FireActionCooldownCoroutine());
-            }
-        }
-
-        private IEnumerator FireActionCooldownCoroutine()
-        {
-            canFire = false;
-
-            yield return new WaitForSeconds(firingRate);
-
-            canFire = true;
+            weapon.Fire(Vector2.up);
         }
 
         private void CalculateScreenBounds()
