@@ -5,7 +5,7 @@ using UnityEngine;
 namespace SpaceInvadersRemake
 {
     [RequireComponent(typeof(Rigidbody2D), typeof(BoxCollider2D))]
-    public class Bullet : MonoBehaviour
+    public class Bullet : MonoBehaviour, IDamageable
     {
         [SerializeReference]
         private float speed = 5f;
@@ -37,6 +37,11 @@ namespace SpaceInvadersRemake
                 damageable.Damage();
                 Destroy(gameObject);
             }
+        }
+
+        public void Damage()
+        {
+            Destroy(gameObject);
         }
     }
 }
