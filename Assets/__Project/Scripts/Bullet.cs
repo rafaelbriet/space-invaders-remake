@@ -4,17 +4,35 @@ using UnityEngine;
 
 namespace SpaceInvadersRemake
 {
+    [RequireComponent(typeof(Rigidbody2D), typeof(BoxCollider2D))]
     public class Bullet : MonoBehaviour
     {
         [SerializeReference]
         private float speed = 5f;
 
-        private void Update()
+        private new Rigidbody2D rigidbody;
+
+        private void Awake()
         {
-            transform.Translate(new Vector3(0, speed * Time.deltaTime, 0));
+            rigidbody = GetComponent<Rigidbody2D>();
+        }
+
+        private void FixedUpdate()
+        {
+            Vector2 movePosition = (speed * Time.fixedDeltaTime * Vector2.up) + rigidbody.position;
+            rigidbody.MovePosition(movePosition);
 
             if (transform.position.y > Camera.main.orthographicSize)
             {
+                Destroy(gameObject);
+            }
+        }
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.gameObject.TryGetComponent(out IDamageable damageable))
+            {
+                damageable.Damage();
                 Destroy(gameObject);
             }
         }
