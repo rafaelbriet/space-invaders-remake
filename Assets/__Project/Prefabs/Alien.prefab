@@ -75,6 +75,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 1432653274255088092}
+  pointsWhenKilled: 20
 --- !u!114 &1432653274255088092
 MonoBehaviour:
   m_ObjectHideFlags: 0

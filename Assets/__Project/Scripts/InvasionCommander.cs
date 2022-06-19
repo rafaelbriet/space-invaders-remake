@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,6 +22,8 @@ namespace SpaceInvadersRemake
         private List<Invader> invaders;
         private float screenBounds;
         private bool canFire = true;
+
+        public event EventHandler<InvaderKilledEventArgs> InvaderKilled;
 
         private void Awake()
         {
@@ -64,7 +67,7 @@ namespace SpaceInvadersRemake
 
             if (invaders.Count > 0)
             {
-                Invader randomInvander = invaders[Random.Range(0, invaders.Count)];
+                Invader randomInvander = invaders[UnityEngine.Random.Range(0, invaders.Count)];
                 randomInvander.Weapon.Fire(Vector2.down);
                 StartCoroutine(FiringCooldownCoroutine());
             }
@@ -101,9 +104,19 @@ namespace SpaceInvadersRemake
                 {
                     float alienSpacing = x * spaceBetweenAliens;
                     Vector3 alienPosition = new Vector3(x + alienSpacing - alienOffset, invasionRow.transform.position.y);
-                    invaders.Add(Instantiate(alienPrefab, alienPosition, Quaternion.identity, invasionRow.transform).GetComponent<Invader>());
+                    Invader invader = Instantiate(alienPrefab, alienPosition, Quaternion.identity, invasionRow.transform).GetComponent<Invader>();
+                    invader.InvaderKilled += OnInvaderKilled;
+                    invaders.Add(invader);
                 }
             }
+        }
+
+        private void OnInvaderKilled(object sender, EventArgs e)
+        {
+            Invader invader = (Invader)sender;
+            InvaderKilledEventArgs eventArgs = new InvaderKilledEventArgs(invader);
+            InvaderKilled?.Invoke(this, eventArgs);
+            invader.InvaderKilled -= OnInvaderKilled;
         }
 
         private void CalculateScreenBounds()
