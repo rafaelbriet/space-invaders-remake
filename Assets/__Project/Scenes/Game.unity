@@ -600,7 +600,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alienPrefab: {fileID: 2570761696993464403, guid: 603c5affe5f63634cbf5ba804791de64, type: 3}
-  invasionSize: {x: 11, y: 5}
+  invasionWidth: 11
+  invasionHeight:
+  - {fileID: 2570761696993464403, guid: 603c5affe5f63634cbf5ba804791de64, type: 3}
+  - {fileID: 2570761696993464403, guid: 603c5affe5f63634cbf5ba804791de64, type: 3}
+  - {fileID: 2570761696993464403, guid: 324e71296e8c35940ad3fcb601c37fbb, type: 3}
+  - {fileID: 2570761696993464403, guid: 324e71296e8c35940ad3fcb601c37fbb, type: 3}
+  - {fileID: 2570761696993464403, guid: 992f8738c4ac1d34990245e990da8ed4, type: 3}
   spaceBetweenAliens: 0.5
   waveVerticalOffset: 0.5
   firingRate: 1

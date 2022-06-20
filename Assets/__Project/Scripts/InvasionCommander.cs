@@ -10,7 +10,9 @@ namespace SpaceInvadersRemake
         [SerializeField]
         private GameObject alienPrefab;
         [SerializeField]
-        private Vector2Int invasionSize = new Vector2Int(11, 5);
+        private int invasionWidth = 11;
+        [SerializeField]
+        private GameObject[] invasionHeight;
         [SerializeField]
         private float spaceBetweenAliens = 1f;
         [SerializeField]
@@ -32,7 +34,7 @@ namespace SpaceInvadersRemake
 
         private void Awake()
         {
-            totalInvadersAmount = invasionSize.x * invasionSize.y;
+            totalInvadersAmount = invasionWidth * invasionHeight.Length;
 
             CalculateScreenBounds();
         }
@@ -90,13 +92,13 @@ namespace SpaceInvadersRemake
         public void CreateInvasion()
         {
             invaders = new List<Invader>();
-            invasionRows = new GameObject[invasionSize.y];
+            invasionRows = new GameObject[invasionHeight.Length];
 
-            float invasionBounds = invasionSize.x / 2;
-            float invasionSpacingBounds = (invasionSize.x - 1) * spaceBetweenAliens / 2;
+            float invasionBounds = invasionWidth / 2;
+            float invasionSpacingBounds = (invasionWidth - 1) * spaceBetweenAliens / 2;
             float alienOffset = invasionBounds + invasionSpacingBounds;
 
-            for (int y = 0; y < invasionSize.y; y++)
+            for (int y = 0; y < invasionHeight.Length; y++)
             {
                 GameObject invasionRow = new GameObject($"InvasionRow_{y}");
                 invasionRow.AddComponent<InvasionRow>().MoveDirection = 1;
@@ -105,11 +107,11 @@ namespace SpaceInvadersRemake
                 invasionRow.transform.position = invasionRowPosition;
                 invasionRows[y] = invasionRow;
 
-                for (int x = 0; x < invasionSize.x; x++)
+                for (int x = 0; x < invasionWidth; x++)
                 {
                     float alienSpacing = x * spaceBetweenAliens;
                     Vector3 alienPosition = new Vector3(x + alienSpacing - alienOffset, invasionRow.transform.position.y);
-                    Invader invader = Instantiate(alienPrefab, alienPosition, Quaternion.identity, invasionRow.transform).GetComponent<Invader>();
+                    Invader invader = Instantiate(invasionHeight[y], alienPosition, Quaternion.identity, invasionRow.transform).GetComponent<Invader>();
                     invader.InvaderKilled += OnInvaderKilled;
                     invaders.Add(invader);
                 }
@@ -134,8 +136,8 @@ namespace SpaceInvadersRemake
 
         private void CalculateScreenBounds()
         {
-            float invasionBounds = invasionSize.x / 2;
-            float invasionSpacingBounds = (invasionSize.x - 1) * spaceBetweenAliens / 2;
+            float invasionBounds = invasionWidth / 2;
+            float invasionSpacingBounds = (invasionWidth - 1) * spaceBetweenAliens / 2;
             float screenWidth = Camera.main.orthographicSize * Camera.main.aspect;
             screenBounds = screenWidth - invasionBounds - invasionSpacingBounds - 0.5f;
         }
