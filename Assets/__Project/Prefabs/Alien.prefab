@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1432653274255088092}
   m_Layer: 7
   m_Name: Alien
-  m_TagString: Untagged
+  m_TagString: Invader
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

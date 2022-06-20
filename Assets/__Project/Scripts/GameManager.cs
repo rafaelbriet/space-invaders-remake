@@ -12,6 +12,8 @@ namespace SpaceInvadersRemake
         private Player player;
         [SerializeField]
         private InvasionCommander invasionCommander;
+        [SerializeField]
+        private Ground ground;
 
         public int CurrentPlayerPoints { get; set; }
 
@@ -21,23 +23,35 @@ namespace SpaceInvadersRemake
         {
             player.PlayerDied += OnPlayerDied;
             invasionCommander.InvaderKilled += OnInvaderKilled;
+            ground.InvadersReachedGround += OnInvadersReachedGround;
         }
 
         private void OnDisable()
         {
             player.PlayerDied -= OnPlayerDied;
             invasionCommander.InvaderKilled -= OnInvaderKilled;
+            ground.InvadersReachedGround -= OnInvadersReachedGround;
         }
 
         private void OnPlayerDied(object sender, System.EventArgs e)
         {
-            SceneManager.LoadScene(ScenesName.GameOver);
+            GameOver();
         }
 
         private void OnInvaderKilled(object sender, InvaderKilledEventArgs e)
         {
             CurrentPlayerPoints += e.Invader.PointsWhenKilled;
             PlayerScored?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void OnInvadersReachedGround(object sender, EventArgs e)
+        {
+            GameOver();
+        }
+
+        private void GameOver()
+        {
+            SceneManager.LoadScene(ScenesName.GameOver);
         }
     }
 }
