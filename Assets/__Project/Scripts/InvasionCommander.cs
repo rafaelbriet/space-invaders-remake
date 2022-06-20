@@ -14,6 +14,8 @@ namespace SpaceInvadersRemake
         [SerializeField]
         private float spaceBetweenAliens = 1f;
         [SerializeField]
+        private float waveVerticalOffset = 1f;
+        [SerializeField]
         private float firingRate = 1f;
         [SerializeField]
         private AnimationCurve invasionSpeedCurve;
@@ -23,15 +25,16 @@ namespace SpaceInvadersRemake
         private float screenBounds;
         private bool canFire = true;
         private int totalInvadersAmount;
+        private float yOffset = 0;
 
         public event EventHandler<InvaderKilledEventArgs> InvaderKilled;
+        public event EventHandler InvasionEnded;
 
         private void Awake()
         {
             totalInvadersAmount = invasionSize.x * invasionSize.y;
 
             CalculateScreenBounds();
-            CreateInvasion();
         }
 
         private void Update()
@@ -67,8 +70,6 @@ namespace SpaceInvadersRemake
                 return;
             }
 
-            invaders.RemoveAll(item => item == null);
-
             if (invaders.Count > 0)
             {
                 Invader randomInvander = invaders[UnityEngine.Random.Range(0, invaders.Count)];
@@ -86,7 +87,7 @@ namespace SpaceInvadersRemake
             canFire = true;
         }
 
-        private void CreateInvasion()
+        public void CreateInvasion()
         {
             invaders = new List<Invader>();
             invasionRows = new GameObject[invasionSize.y];
@@ -100,7 +101,7 @@ namespace SpaceInvadersRemake
                 GameObject invasionRow = new GameObject($"InvasionRow_{y}");
                 invasionRow.AddComponent<InvasionRow>().MoveDirection = 1;
                 float invasionSpacing = y * spaceBetweenAliens;
-                Vector3 invasionRowPosition = new Vector3(0, y + invasionSpacing);
+                Vector3 invasionRowPosition = new Vector3(0, y + invasionSpacing - yOffset);
                 invasionRow.transform.position = invasionRowPosition;
                 invasionRows[y] = invasionRow;
 
@@ -113,6 +114,8 @@ namespace SpaceInvadersRemake
                     invaders.Add(invader);
                 }
             }
+
+            yOffset += waveVerticalOffset;
         }
 
         private void OnInvaderKilled(object sender, EventArgs e)
@@ -121,6 +124,12 @@ namespace SpaceInvadersRemake
             InvaderKilledEventArgs eventArgs = new InvaderKilledEventArgs(invader);
             InvaderKilled?.Invoke(this, eventArgs);
             invader.InvaderKilled -= OnInvaderKilled;
+            invaders.Remove(invader);
+
+            if (invaders.Count == 0)
+            {
+                InvasionEnded?.Invoke(this, EventArgs.Empty);
+            }
         }
 
         private void CalculateScreenBounds()
