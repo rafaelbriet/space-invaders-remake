@@ -21,8 +21,15 @@ namespace SpaceInvadersRemake
         private float firingRate = 1f;
         [SerializeField]
         private AnimationCurve invasionSpeedCurve;
+        [SerializeField]
+        private GameObject alienSpecialPrefab;
+        [SerializeField]
+        private float minTimeBetweenSpecialAlienSpawn = 3f;
+        [SerializeField]
+        private float maxTimeBetweenSpecialAlienSpawn = 6f;
 
         private GameObject[] invasionRows;
+        private GameObject invasionSpecialRow;
         private List<Invader> invaders;
         private float screenBounds;
         private bool canFire = true;
@@ -63,6 +70,63 @@ namespace SpaceInvadersRemake
             }
 
             Fire();
+            MoveSpecialRow();
+        }
+
+        private void MoveSpecialRow()
+        {
+            if (invasionSpecialRow == null)
+            {
+                return;
+            }
+
+            Debug.Log("MoveSpecialRow");
+
+            float moveSpeed = invasionSpeedCurve.Evaluate(1f);
+            float movePosition = invasionSpecialRow.transform.position.x + (invasionSpecialRow.GetComponent<InvasionRow>().MoveDirection * moveSpeed * Time.deltaTime);
+            invasionSpecialRow.transform.position = new Vector3(movePosition, invasionSpecialRow.transform.position.y, invasionSpecialRow.transform.position.z);
+
+            float screenWidth = Camera.main.orthographicSize * Camera.main.aspect;
+
+            if (Mathf.Abs(invasionSpecialRow.transform.position.x) > screenWidth)
+            {
+                Destroy(invasionSpecialRow);
+                StartCoroutine(SpawnSpecialInvaderCoroutine());
+            }
+        }
+
+        private void SpawnSpecialInvader()
+        {
+            int diceRoll = UnityEngine.Random.Range(1, 7);
+            float screenWidth = Camera.main.orthographicSize * Camera.main.aspect;
+            float xPosition;
+            float moveDirection;
+
+            if (diceRoll <= 3)
+            {
+                xPosition = screenWidth;
+                moveDirection = -1;
+            }
+            else
+            {
+                xPosition = -screenWidth;
+                moveDirection = 1;
+            }
+
+            invasionSpecialRow = new GameObject("InvasionRow_Special");
+            invasionSpecialRow.AddComponent<InvasionRow>().MoveDirection = moveDirection;
+            Vector3 specialInvaderRowPosition = new Vector3(xPosition, Camera.main.orthographicSize - 2.5f);
+            invasionSpecialRow.transform.position = specialInvaderRowPosition;
+            Instantiate(alienSpecialPrefab, invasionSpecialRow.transform);
+        }
+
+        private IEnumerator SpawnSpecialInvaderCoroutine()
+        {
+            float timeToNextSpecialAlienSpawn = UnityEngine.Random.Range(minTimeBetweenSpecialAlienSpawn, maxTimeBetweenSpecialAlienSpawn);
+
+            yield return new WaitForSeconds(timeToNextSpecialAlienSpawn);
+
+            SpawnSpecialInvader();
         }
 
         private void Fire()
@@ -116,6 +180,8 @@ namespace SpaceInvadersRemake
                     invaders.Add(invader);
                 }
             }
+
+            StartCoroutine(SpawnSpecialInvaderCoroutine());
 
             yOffset += waveVerticalOffset;
         }

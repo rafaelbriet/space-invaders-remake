@@ -634,6 +634,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  alienSpecialPrefab: {fileID: 2570761696993464403, guid: d561d4617049bc245a029ae3fdc6f860, type: 3}
 --- !u!4 &743549032
 Transform:
   m_ObjectHideFlags: 0
