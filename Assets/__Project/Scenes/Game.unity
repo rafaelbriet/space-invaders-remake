@@ -602,7 +602,7 @@ MonoBehaviour:
   alienPrefab: {fileID: 2570761696993464403, guid: 603c5affe5f63634cbf5ba804791de64, type: 3}
   invasionSize: {x: 11, y: 5}
   spaceBetweenAliens: 0.5
-  waveVerticalOffset: 3
+  waveVerticalOffset: 0.5
   firingRate: 1
   invasionSpeedCurve:
     serializedVersion: 2
