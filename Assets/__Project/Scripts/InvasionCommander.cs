@@ -12,21 +12,24 @@ namespace SpaceInvadersRemake
         [SerializeField]
         private Vector2Int invasionSize = new Vector2Int(11, 5);
         [SerializeField]
-        private float invasionStartingSpeed = 5f;
-        [SerializeField]
         private float spaceBetweenAliens = 1f;
         [SerializeField]
         private float firingRate = 1f;
+        [SerializeField]
+        private AnimationCurve invasionSpeedCurve;
 
         private GameObject[] invasionRows;
         private List<Invader> invaders;
         private float screenBounds;
         private bool canFire = true;
+        private int totalInvadersAmount;
 
         public event EventHandler<InvaderKilledEventArgs> InvaderKilled;
 
         private void Awake()
         {
+            totalInvadersAmount = invasionSize.x * invasionSize.y;
+
             CalculateScreenBounds();
             CreateInvasion();
         }
@@ -48,7 +51,8 @@ namespace SpaceInvadersRemake
                     row.transform.position = new Vector3(row.transform.position.x, row.transform.position.y - 0.5f, row.transform.position.z);
                 }
 
-                float moveSpeed = invasionStartingSpeed;
+                float percentInvasionLeft = (float)invaders.Count / (float)totalInvadersAmount;
+                float moveSpeed = invasionSpeedCurve.Evaluate(percentInvasionLeft);
                 float movePosition = row.transform.position.x + (row.GetComponent<InvasionRow>().MoveDirection * moveSpeed * Time.deltaTime);
                 row.transform.position = new Vector3(movePosition, row.transform.position.y, row.transform.position.z);
             }
