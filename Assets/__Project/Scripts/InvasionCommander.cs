@@ -80,8 +80,6 @@ namespace SpaceInvadersRemake
                 return;
             }
 
-            Debug.Log("MoveSpecialRow");
-
             float moveSpeed = invasionSpeedCurve.Evaluate(1f);
             float movePosition = invasionSpecialRow.transform.position.x + (invasionSpecialRow.GetComponent<InvasionRow>().MoveDirection * moveSpeed * Time.deltaTime);
             invasionSpecialRow.transform.position = new Vector3(movePosition, invasionSpecialRow.transform.position.y, invasionSpecialRow.transform.position.z);
