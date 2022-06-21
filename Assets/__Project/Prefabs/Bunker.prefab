@@ -44,6 +44,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 803075878683995362}
     m_Modifications:
+    - target: {fileID: 1441073693490988430, guid: f97e7ec1816ecf24b8743be2bc3f9318, type: 3}
+      propertyPath: maxLives.Array.data[0]
+      value: 
+      objectReference: {fileID: -1359983397, guid: db4cdabec1dfdea46a0cb2f72019fd79, type: 3}
+    - target: {fileID: 1441073693490988430, guid: f97e7ec1816ecf24b8743be2bc3f9318, type: 3}
+      propertyPath: maxLives.Array.data[1]
+      value: 
+      objectReference: {fileID: -227979485, guid: 7f9d137a7598d8c4ca73a87fd2b96092, type: 3}
+    - target: {fileID: 1441073693490988430, guid: f97e7ec1816ecf24b8743be2bc3f9318, type: 3}
+      propertyPath: maxLives.Array.data[2]
+      value: 
+      objectReference: {fileID: -756034119, guid: 80dffd8881af20f4885da918d06733b2, type: 3}
+    - target: {fileID: 1441073693490988430, guid: f97e7ec1816ecf24b8743be2bc3f9318, type: 3}
+      propertyPath: maxLives.Array.data[3]
+      value: 
+      objectReference: {fileID: 1010740902, guid: 96a1203520bfcbd47b1e1e7213623be8, type: 3}
+    - target: {fileID: 1441073693490988430, guid: f97e7ec1816ecf24b8743be2bc3f9318, type: 3}
+      propertyPath: maxLives.Array.data[4]
+      value: 
+      objectReference: {fileID: 1725512562, guid: e1aba64ddc0a4b646847170a3f13a23c, type: 3}
     - target: {fileID: 5085164802977457187, guid: f97e7ec1816ecf24b8743be2bc3f9318, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -110,6 +130,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 803075878683995362}
     m_Modifications:
+    - target: {fileID: 1441073693490988430, guid: f97e7ec1816ecf24b8743be2bc3f9318, type: 3}
+      propertyPath: maxLives.Array.data[0]
+      value: 
+      objectReference: {fileID: -1359983397, guid: db4cdabec1dfdea46a0cb2f72019fd79, type: 3}
+    - target: {fileID: 1441073693490988430, guid: f97e7ec1816ecf24b8743be2bc3f9318, type: 3}
+      propertyPath: maxLives.Array.data[1]
+      value: 
+      objectReference: {fileID: -227979485, guid: 7f9d137a7598d8c4ca73a87fd2b96092, type: 3}
+    - target: {fileID: 1441073693490988430, guid: f97e7ec1816ecf24b8743be2bc3f9318, type: 3}
+      propertyPath: maxLives.Array.data[2]
+      value: 
+      objectReference: {fileID: -756034119, guid: 80dffd8881af20f4885da918d06733b2, type: 3}
+    - target: {fileID: 1441073693490988430, guid: f97e7ec1816ecf24b8743be2bc3f9318, type: 3}
+      propertyPath: maxLives.Array.data[3]
+      value: 
+      objectReference: {fileID: 1010740902, guid: 96a1203520bfcbd47b1e1e7213623be8, type: 3}
+    - target: {fileID: 1441073693490988430, guid: f97e7ec1816ecf24b8743be2bc3f9318, type: 3}
+      propertyPath: maxLives.Array.data[4]
+      value: 
+      objectReference: {fileID: 1725512562, guid: e1aba64ddc0a4b646847170a3f13a23c, type: 3}
     - target: {fileID: 5085164802977457187, guid: f97e7ec1816ecf24b8743be2bc3f9318, type: 3}
       propertyPath: m_FlipX
       value: 1
@@ -180,6 +220,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 803075878683995362}
     m_Modifications:
+    - target: {fileID: 1441073693490988430, guid: f97e7ec1816ecf24b8743be2bc3f9318, type: 3}
+      propertyPath: maxLives.Array.data[0]
+      value: 
+      objectReference: {fileID: 966657569, guid: db4cdabec1dfdea46a0cb2f72019fd79, type: 3}
+    - target: {fileID: 1441073693490988430, guid: f97e7ec1816ecf24b8743be2bc3f9318, type: 3}
+      propertyPath: maxLives.Array.data[1]
+      value: 
+      objectReference: {fileID: 1437907691, guid: 7f9d137a7598d8c4ca73a87fd2b96092, type: 3}
+    - target: {fileID: 1441073693490988430, guid: f97e7ec1816ecf24b8743be2bc3f9318, type: 3}
+      propertyPath: maxLives.Array.data[2]
+      value: 
+      objectReference: {fileID: -863759759, guid: 80dffd8881af20f4885da918d06733b2, type: 3}
+    - target: {fileID: 1441073693490988430, guid: f97e7ec1816ecf24b8743be2bc3f9318, type: 3}
+      propertyPath: maxLives.Array.data[3]
+      value: 
+      objectReference: {fileID: -249990103, guid: 96a1203520bfcbd47b1e1e7213623be8, type: 3}
+    - target: {fileID: 1441073693490988430, guid: f97e7ec1816ecf24b8743be2bc3f9318, type: 3}
+      propertyPath: maxLives.Array.data[4]
+      value: 
+      objectReference: {fileID: 436803045, guid: e1aba64ddc0a4b646847170a3f13a23c, type: 3}
     - target: {fileID: 5085164802977457187, guid: f97e7ec1816ecf24b8743be2bc3f9318, type: 3}
       propertyPath: m_FlipX
       value: 1
@@ -250,6 +310,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 803075878683995362}
     m_Modifications:
+    - target: {fileID: 1441073693490988430, guid: f97e7ec1816ecf24b8743be2bc3f9318, type: 3}
+      propertyPath: maxLives.Array.data[0]
+      value: 
+      objectReference: {fileID: 966657569, guid: db4cdabec1dfdea46a0cb2f72019fd79, type: 3}
+    - target: {fileID: 1441073693490988430, guid: f97e7ec1816ecf24b8743be2bc3f9318, type: 3}
+      propertyPath: maxLives.Array.data[1]
+      value: 
+      objectReference: {fileID: 1437907691, guid: 7f9d137a7598d8c4ca73a87fd2b96092, type: 3}
+    - target: {fileID: 1441073693490988430, guid: f97e7ec1816ecf24b8743be2bc3f9318, type: 3}
+      propertyPath: maxLives.Array.data[2]
+      value: 
+      objectReference: {fileID: -863759759, guid: 80dffd8881af20f4885da918d06733b2, type: 3}
+    - target: {fileID: 1441073693490988430, guid: f97e7ec1816ecf24b8743be2bc3f9318, type: 3}
+      propertyPath: maxLives.Array.data[3]
+      value: 
+      objectReference: {fileID: -249990103, guid: 96a1203520bfcbd47b1e1e7213623be8, type: 3}
+    - target: {fileID: 1441073693490988430, guid: f97e7ec1816ecf24b8743be2bc3f9318, type: 3}
+      propertyPath: maxLives.Array.data[4]
+      value: 
+      objectReference: {fileID: 436803045, guid: e1aba64ddc0a4b646847170a3f13a23c, type: 3}
     - target: {fileID: 5085164802977457187, guid: f97e7ec1816ecf24b8743be2bc3f9318, type: 3}
       propertyPath: m_FlipX
       value: 0
@@ -328,6 +408,26 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 1441073693490988430, guid: f97e7ec1816ecf24b8743be2bc3f9318, type: 3}
+      propertyPath: maxLives.Array.data[0]
+      value: 
+      objectReference: {fileID: 1667469956, guid: db4cdabec1dfdea46a0cb2f72019fd79, type: 3}
+    - target: {fileID: 1441073693490988430, guid: f97e7ec1816ecf24b8743be2bc3f9318, type: 3}
+      propertyPath: maxLives.Array.data[1]
+      value: 
+      objectReference: {fileID: -944495139, guid: 7f9d137a7598d8c4ca73a87fd2b96092, type: 3}
+    - target: {fileID: 1441073693490988430, guid: f97e7ec1816ecf24b8743be2bc3f9318, type: 3}
+      propertyPath: maxLives.Array.data[2]
+      value: 
+      objectReference: {fileID: -758870342, guid: 80dffd8881af20f4885da918d06733b2, type: 3}
+    - target: {fileID: 1441073693490988430, guid: f97e7ec1816ecf24b8743be2bc3f9318, type: 3}
+      propertyPath: maxLives.Array.data[3]
+      value: 
+      objectReference: {fileID: 1207413943, guid: 96a1203520bfcbd47b1e1e7213623be8, type: 3}
+    - target: {fileID: 1441073693490988430, guid: f97e7ec1816ecf24b8743be2bc3f9318, type: 3}
+      propertyPath: maxLives.Array.data[4]
+      value: 
+      objectReference: {fileID: -1581864276, guid: e1aba64ddc0a4b646847170a3f13a23c, type: 3}
     - target: {fileID: 5085164802977457187, guid: f97e7ec1816ecf24b8743be2bc3f9318, type: 3}
       propertyPath: m_FlipX
       value: 0
@@ -398,6 +498,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 803075878683995362}
     m_Modifications:
+    - target: {fileID: 1441073693490988430, guid: f97e7ec1816ecf24b8743be2bc3f9318, type: 3}
+      propertyPath: maxLives.Array.data[0]
+      value: 
+      objectReference: {fileID: 1228001087, guid: db4cdabec1dfdea46a0cb2f72019fd79, type: 3}
+    - target: {fileID: 1441073693490988430, guid: f97e7ec1816ecf24b8743be2bc3f9318, type: 3}
+      propertyPath: maxLives.Array.data[1]
+      value: 
+      objectReference: {fileID: -1968071224, guid: 7f9d137a7598d8c4ca73a87fd2b96092, type: 3}
+    - target: {fileID: 1441073693490988430, guid: f97e7ec1816ecf24b8743be2bc3f9318, type: 3}
+      propertyPath: maxLives.Array.data[2]
+      value: 
+      objectReference: {fileID: -1388164941, guid: 80dffd8881af20f4885da918d06733b2, type: 3}
+    - target: {fileID: 1441073693490988430, guid: f97e7ec1816ecf24b8743be2bc3f9318, type: 3}
+      propertyPath: maxLives.Array.data[3]
+      value: 
+      objectReference: {fileID: -1599917462, guid: 96a1203520bfcbd47b1e1e7213623be8, type: 3}
+    - target: {fileID: 1441073693490988430, guid: f97e7ec1816ecf24b8743be2bc3f9318, type: 3}
+      propertyPath: maxLives.Array.data[4]
+      value: 
+      objectReference: {fileID: -155953855, guid: e1aba64ddc0a4b646847170a3f13a23c, type: 3}
     - target: {fileID: 5085164802977457187, guid: f97e7ec1816ecf24b8743be2bc3f9318, type: 3}
       propertyPath: m_Sprite
       value: 

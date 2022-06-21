@@ -7,7 +7,7 @@ namespace SpaceInvadersRemake
     public class BunkerPart : MonoBehaviour, IDamageable
     {
         [SerializeField]
-        private Color[] maxLives;
+        private Sprite[] maxLives;
         [SerializeField]
         private SpriteRenderer spriteRenderer;
 
@@ -16,14 +16,12 @@ namespace SpaceInvadersRemake
         private void Awake()
         {
             currentLives = maxLives.Length;
-
-            UpdateSpriteRendererColor();
         }
 
         public void Damage()
         {
             currentLives--;
-            UpdateSpriteRendererColor();
+            ChangeSprite();
 
             if (currentLives <= 0)
             {
@@ -31,13 +29,13 @@ namespace SpaceInvadersRemake
             }
         }
 
-        private void UpdateSpriteRendererColor()
+        private void ChangeSprite()
         {
             int indexFromCurrentLives = currentLives - 1;
 
             if (indexFromCurrentLives >= 0)
             {
-                spriteRenderer.color = maxLives[indexFromCurrentLives];
+                spriteRenderer.sprite = maxLives[indexFromCurrentLives];
             }
         }
     }
