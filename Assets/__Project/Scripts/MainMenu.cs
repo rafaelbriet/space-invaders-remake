@@ -11,5 +11,14 @@ namespace SpaceInvadersRemake
         {
             SceneManager.LoadScene(ScenesName.Game);
         }
+
+        public void QuitGame()
+        {
+#if UNITY_EDITOR
+            Debug.Log("Quitting the game!");
+#else
+            Application.Quit();
+#endif
+        }
     }
 }
