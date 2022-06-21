@@ -27,6 +27,8 @@ namespace SpaceInvadersRemake
         private float minTimeBetweenSpecialAlienSpawn = 3f;
         [SerializeField]
         private float maxTimeBetweenSpecialAlienSpawn = 6f;
+        [SerializeField]
+        private AudioSource audioSource;
 
         private GameObject[] invasionRows;
         private GameObject invasionSpecialRow;
@@ -174,6 +176,7 @@ namespace SpaceInvadersRemake
                     float alienSpacing = x * spaceBetweenAliens;
                     Vector3 alienPosition = new Vector3(x + alienSpacing - alienOffset, invasionRow.transform.position.y);
                     Invader invader = Instantiate(invasionHeight[y], alienPosition, Quaternion.identity, invasionRow.transform).GetComponent<Invader>();
+                    invader.AudioSource = audioSource;
                     invader.InvaderKilled += OnInvaderKilled;
                     invaders.Add(invader);
                 }

@@ -160,6 +160,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 1432653274255088092}
   pointsWhenKilled: 20
+  audioSource: {fileID: 0}
+  damageAudioClip: {fileID: 8300000, guid: 34d7c289bbf126d4ea2b1faca73c7832, type: 3}
 --- !u!114 &1432653274255088092
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -15,6 +15,14 @@ namespace SpaceInvadersRemake
         private Weapon weapon;
         [SerializeField]
         private int maxLives = 3;
+        [Header("Audio")]
+        [SerializeField]
+        private AudioSource audioSource;
+        [SerializeField]
+        private AudioClip damageAudioClip;
+        [SerializeField]
+        private AudioClip fireAudioClip;
+
         private float horizontal;
         private float screenBounds;
         private new BoxCollider2D collider;
@@ -70,6 +78,7 @@ namespace SpaceInvadersRemake
 
         private void OnFireAction(InputAction.CallbackContext obj)
         {
+            audioSource.PlayOneShot(fireAudioClip);
             weapon.Fire(Vector2.up);
         }
 
@@ -90,6 +99,8 @@ namespace SpaceInvadersRemake
         public void Damage()
         {
             CurrentLives--;
+
+            audioSource.PlayOneShot(damageAudioClip);
 
             PlayerDamaged?.Invoke(this, EventArgs.Empty);
 
